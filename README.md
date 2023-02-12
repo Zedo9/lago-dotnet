@@ -16,7 +16,7 @@ dotnet add package Lago.NET.Client
 
 ## Usage
 
-### Directly creating an instance of ILagoClient
+### Directly creating an instance of LagoClient
 
 ```csharp
 using Lago.NET.Client;
@@ -34,7 +34,10 @@ BillableMetric result = await lagoClient.BillableMetrics.CreateAsync(billableMet
 // startup.cs / program.cs
 using Lago.NET.Client.Extensions.DependencyInjection;
 
-services.AddLagoClient((httpClient) => { /* Custom httpClient configuration */}, "apiKey", "https://api.getlago.com" );
+services.AddLagoClient((httpClient) => {
+    /* Custom httpClient configuration */},
+    "apiKey",
+    "https://api.getlago.com" );
 ```
 
 ```csharp
@@ -54,4 +57,4 @@ public CustomService
 
 ## License
 
-Lago.NET client is distributed under [MIT](LICENSE).
+Lago .NET client is distributed under the [MIT](LICENSE) license.
