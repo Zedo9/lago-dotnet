@@ -1,5 +1,3 @@
-using Lago.NET.Tests.Fixtures;
-
 namespace Lago.NET.Tests.Clients;
 
 public class BillableMetricsClientTests
