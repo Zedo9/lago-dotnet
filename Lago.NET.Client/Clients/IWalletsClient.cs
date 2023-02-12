@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 using Lago.NET.Client.DTOs.Inputs;
 using Lago.NET.Client.DTOs.ListResults;
-using Lago.NET.Client.DTOs.Shared;
+using Lago.NET.Client.DTOs.Filters;
 using Lago.NET.Client.Models;
 
 using Refit;
@@ -16,7 +16,9 @@ namespace Lago.NET.Client.Clients
                             CreateWalletInput createWalletInput,
                             CancellationToken cancellationToken = default)
         {
-            var result = await CreateAsyncInternal(new CreateWalletInputWrapper(createWalletInput), cancellationToken);
+            var result = await CreateAsyncInternal(
+                new CreateWalletInputWrapper(createWalletInput),
+                cancellationToken);
 
             return result?.Wallet;
         }
@@ -59,6 +61,24 @@ namespace Lago.NET.Client.Clients
             CancellationToken cancellationToken = default
         );
 
+        async Task<WalletTransaction> CreateTransactionAsync(
+            CreateWalletTransactionInput createWalletTransactionInput,
+            CancellationToken cancellationToken = default)
+        {
+            var result = await CreateTransactionAsyncInternal(
+                new CreateWalletTransactionInputWrapper(createWalletTransactionInput),
+                cancellationToken);
+
+            return result?.WalletTransaction;
+        }
+
+        [Get("/wallets/{walletId}/wallet_transactions")]
+        Task<WalletTransactionsResult> FindAllTransactionsAsync(
+            string walletId,
+            [Query] WalletTransactionsFilter walletTransactionsFilter = null,
+            CancellationToken cancellationToken = default
+        );
+
         #region Internal
         [Post("/wallets")]
         internal Task<WalletWrapper> CreateAsyncInternal(
@@ -78,7 +98,12 @@ namespace Lago.NET.Client.Clients
 
         [Get("/wallets/{walletId}")]
         internal Task<WalletWrapper> FindOneAsyncInternal(
-            string code,
+            string walletId,
+            CancellationToken cancellationToken);
+
+        [Post("/wallet_transactions")]
+        internal Task<WalletTransactionWrapper> CreateTransactionAsyncInternal(
+            [Body] CreateWalletTransactionInputWrapper createWalletInputWrapper,
             CancellationToken cancellationToken);
         #endregion
     }

@@ -6,7 +6,7 @@ using Lago.NET.Client.Models;
 
 namespace Lago.NET.Client.DTOs.ListResults
 {
-    public class GroupsResult : ListResult<Group>
+    public class GroupsResult : ListResult
     {
         [JsonPropertyName("groups")]
         public IEnumerable<Group> Groups { get; set; }

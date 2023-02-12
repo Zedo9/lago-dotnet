@@ -106,7 +106,7 @@ namespace Lago.NET.Client.DTOs.Inputs
         public CustomerBillingConfiguration BillingConfiguration { get; set; }
     }
 
-    public class CustomerInputWrapper
+    internal class CustomerInputWrapper
     {
         public CustomerInputWrapper(CustomerInput customerInput)
         {

@@ -14,7 +14,7 @@ namespace Lago.NET.Client.DTOs.Inputs
         public string GrantedCredits { get; set; }
     }
 
-    public class CreateWalletTransactionInputWrapper
+    internal class CreateWalletTransactionInputWrapper
     {
         public CreateWalletTransactionInputWrapper(CreateWalletTransactionInput createWalletTransactionInput)
         {

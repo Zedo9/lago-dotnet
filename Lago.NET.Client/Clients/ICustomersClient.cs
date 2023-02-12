@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 using Lago.NET.Client.DTOs.Inputs;
 using Lago.NET.Client.DTOs.ListResults;
-using Lago.NET.Client.DTOs.Shared;
+using Lago.NET.Client.DTOs.Filters;
 using Lago.NET.Client.Models;
 
 using Refit;
@@ -28,7 +28,7 @@ namespace Lago.NET.Client.Clients
             CancellationToken cancellationToken = default)
         {
             var result = await FindOneAsyncInternal(code, cancellationToken);
-            
+
             return result?.Customer;
         }
 

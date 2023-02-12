@@ -22,7 +22,7 @@ namespace Lago.NET.Client.Models
         /// Custom VAT rate applied to the customer.
         /// </summary>
         [JsonPropertyName("vat_rate")]
-        public double VatRate { get; set; }
+        public decimal VatRate { get; set; }
 
         /// <summary>
         /// Field that determines whether to create customer in payment provider or not..

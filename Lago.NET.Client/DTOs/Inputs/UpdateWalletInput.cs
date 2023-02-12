@@ -12,7 +12,7 @@ namespace Lago.NET.Client.DTOs.Inputs
         public DateTime ExpirationDate { get; set; }
     }
 
-    public class UpdateWalletInputWrapper
+    internal class UpdateWalletInputWrapper
     {
         public UpdateWalletInputWrapper(UpdateWalletInput updateWalletInput)
         {

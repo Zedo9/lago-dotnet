@@ -6,10 +6,9 @@ using Lago.NET.Client.Models;
 
 namespace Lago.NET.Client.DTOs.ListResults
 {
-    public class CustomersResult : ListResult<Customer>
+    public class CustomersResult : ListResult
     {
         [JsonPropertyName("customers")]
         public IEnumerable<Customer> Customers { get; set; }
-
     }
 }

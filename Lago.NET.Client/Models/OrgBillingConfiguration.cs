@@ -7,7 +7,10 @@ namespace Lago.NET.Client.Models
         [JsonPropertyName("invoice_footer")]
         public string InvoiceFooter { get; set; }
 
+        [JsonPropertyName("invoice_grace_period")]
+        public string InvoiceGracePeriod { get; set; }
+
         [JsonPropertyName("vat_rate")]
-        public double VatRate { get; set; }
+        public decimal VatRate { get; set; }
     }
 }

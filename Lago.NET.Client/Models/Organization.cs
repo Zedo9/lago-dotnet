@@ -41,7 +41,16 @@ namespace Lago.NET.Client.Models
         [JsonPropertyName("legal_number")]
         public string LegalNumber { get; set; }
 
+        [JsonPropertyName("timezone")]
+        public string TimeZone { get; set; }
+
         [JsonPropertyName("billing_configuration")]
         public OrgBillingConfiguration BillingConfiguration { get; set; }
+    }
+
+    internal class OrganizationWrapper
+    {
+        [JsonPropertyName("organization")]
+        public Organization Organization { get; set; }
     }
 }

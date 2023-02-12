@@ -26,7 +26,7 @@ namespace Lago.NET.Client.DTOs.Inputs
         public string ExternalCustomerId { get; set; }
     }
 
-    public class CreateWalletInputWrapper
+    internal class CreateWalletInputWrapper
     {
         public CreateWalletInputWrapper(CreateWalletInput createWalletInput)
         {

@@ -48,7 +48,7 @@ namespace Lago.NET.Client.DTOs.Inputs
         public DateTime SubscriptionDate { get; set; }
     }
 
-    public class CreateSubscriptionInputWrapper
+    internal class CreateSubscriptionInputWrapper
     {
         public CreateSubscriptionInputWrapper(CreateSubscriptionInput subscriptionInput)
         {

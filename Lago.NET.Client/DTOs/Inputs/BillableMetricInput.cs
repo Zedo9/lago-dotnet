@@ -44,7 +44,7 @@ namespace Lago.NET.Client.DTOs.Inputs
         public Group Group { get; set; }
     }
 
-    public class BillableMetricInputWrapper
+    internal class BillableMetricInputWrapper
     {
         public BillableMetricInputWrapper(BillableMetricInput billableMetricInput)
         {

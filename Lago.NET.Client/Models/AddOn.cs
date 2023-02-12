@@ -32,4 +32,9 @@ namespace Lago.NET.Client.Models
         [JsonPropertyName("description")]
         public string Description { get; set; }
     }
+
+    internal class AddOnWrapper
+    {
+        internal AddOn AddOn { get; set; }
+    }
 }
