@@ -12,7 +12,6 @@
         <PackageProjectUrl>https://github.com/zedo9/lago-dotnet</PackageProjectUrl>
         <RepositoryUrl>https://github.com/zedo9/lago-dotnet</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>lago;dotnet;billing;api;opensource</PackageTags>
         <!-- <PackageIconUrl>https://doc.getlago.com/img/logo.svg</PackageIconUrl> -->
         <PackageReleaseNotes>See https://github.com/zedo9/lago-dotnet/releases</PackageReleaseNotes>
