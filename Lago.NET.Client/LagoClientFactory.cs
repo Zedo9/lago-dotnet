@@ -40,7 +40,7 @@ namespace Lago.NET.Client
 
         public static ILagoClient Create(
             string apiKey,
-            string apiHost = Defaults.DefaultBaseUrl)
+            string apiHost = Defaults.DefaultHost)
         {
             return Create(apiKey, apiHost, new HttpClient());
         }

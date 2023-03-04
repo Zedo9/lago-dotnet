@@ -13,11 +13,11 @@ namespace Lago.NET.Client.Clients
     public interface IBillableMetricsClient : IFluentInterface
     {
         async Task<BillableMetric> CreateAsync(
-            BillableMetricInput billableMetricInput,
+            CreateOrUpdateBillableMetricInput billableMetricInput,
             CancellationToken cancellationToken = default)
         {
             var result = await CreateAsyncInternal(
-                new BillableMetricInputWrapper(billableMetricInput),
+                new CreateOrUpdateBillableMetricInputWrapper(billableMetricInput),
                 cancellationToken);
 
             return result?.BillableMetric;
@@ -25,12 +25,12 @@ namespace Lago.NET.Client.Clients
 
         async Task<BillableMetric> UpdateAsync(
             string code,
-            BillableMetricInput billableMetricInput,
+            CreateOrUpdateBillableMetricInput billableMetricInput,
             CancellationToken cancellationToken = default)
         {
             var result = await UpdateAsyncInternal(
                 code,
-                new BillableMetricInputWrapper(billableMetricInput),
+                new CreateOrUpdateBillableMetricInputWrapper(billableMetricInput),
                 cancellationToken);
 
             return result?.BillableMetric;
@@ -62,13 +62,13 @@ namespace Lago.NET.Client.Clients
         #region Internal
         [Post("/billable_metrics")]
         internal Task<BillableMetricWrapper> CreateAsyncInternal(
-            [Body] BillableMetricInputWrapper billableMetricInputWrapper,
+            [Body] CreateOrUpdateBillableMetricInputWrapper billableMetricInputWrapper,
             CancellationToken cancellationToken);
 
         [Put("/billable_metrics/{code}")]
         internal Task<BillableMetricWrapper> UpdateAsyncInternal(
             string code,
-            [Body] BillableMetricInputWrapper billableMetricInputWrapper,
+            [Body] CreateOrUpdateBillableMetricInputWrapper billableMetricInputWrapper,
             CancellationToken cancellationToken);
 
         [Delete("/billable_metrics/{code}")]

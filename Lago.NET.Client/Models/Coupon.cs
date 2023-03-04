@@ -1,5 +1,4 @@
 using System;
-using System.Text.Json.Serialization;
 
 using Lago.NET.Client.Enums;
 
@@ -10,58 +9,42 @@ namespace Lago.NET.Client.Models
         /// <summary>
         /// Unique identifier of the Coupon in Lago application.
         /// </summary>
-        [JsonPropertyName("lago_id")]
         public string LagoId { get; set; }
 
         /// <summary>
         /// Date of Coupon creation.
         /// </summary>
-        [JsonPropertyName("created_at")]
         public DateTime CreatedAt { get; set; }
 
-        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonPropertyName("code")]
         public string Code { get; set; }
 
-        [JsonPropertyName("amount_cents")]
-        public int AmountCents { get; set; }
+        public int? AmountCents { get; set; }
 
-        [JsonPropertyName("amount_currency")]
         public string AmountCurrency { get; set; }
 
-        [JsonPropertyName("percentage_rate")]
-        public decimal PercentageRate { get; set; }
+        public double? PercentageRate { get; set; }
 
-        [JsonPropertyName("coupon_type")]
         public CouponType CouponType { get; set; }
 
-        [JsonPropertyName("reusable")]
-        public bool Reusable { get; set; }
+        public bool? Reusable { get; set; }
 
-        [JsonPropertyName("limited_plans")]
-        public bool LimitedPlans { get; set; }
+        public bool? LimitedPlans { get; set; }
 
-        [JsonPropertyName("frequency")]
         public Frequency Frequency { get; set; }
 
-        [JsonPropertyName("frequency_duration")]
-        public int FrequencyDuration { get; set; }
+        public int? FrequencyDuration { get; set; }
 
-        [JsonPropertyName("plan_codes")]
         public string[] PlanCodes { get; set; }
 
-        [JsonPropertyName("expiration")]
         public Expiration Expiration { get; set; }
 
-        [JsonPropertyName("expiration_date")]
-        public DateTime ExpirationDate { get; set; }
+        public DateTime ExpirationAt { get; set; }
     }
 
     internal class CouponWrapper
     {
-        [JsonPropertyName("coupon")]
         public Coupon Coupon { get; set; }
     }
 }

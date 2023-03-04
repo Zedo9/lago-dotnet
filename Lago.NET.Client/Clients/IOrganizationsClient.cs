@@ -10,11 +10,11 @@ namespace Lago.NET.Client.Clients
 {
     public interface IOrganizationsClient : IFluentInterface
     {
-        async Task<Organization> UpdateOrganizationAsync(
+        async Task<Organization> UpdateAsync(
             UpdateOrganizationInput updateOrganizationInput,
             CancellationToken cancellationToken = default)
         {
-            var result = await UpdateOrganizationAsyncInternal(
+            var result = await UpdateAsyncInternal(
                 new UpdateOrganizationInputWrapper(updateOrganizationInput),
                 cancellationToken);
 
@@ -23,7 +23,7 @@ namespace Lago.NET.Client.Clients
 
         #region Internal
         [Put("/organizations")]
-        internal Task<OrganizationWrapper> UpdateOrganizationAsyncInternal(
+        internal Task<OrganizationWrapper> UpdateAsyncInternal(
             UpdateOrganizationInputWrapper updateOrganizationInputWrapper,
             CancellationToken cancellationToken);
         #endregion

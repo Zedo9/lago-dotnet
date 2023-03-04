@@ -27,9 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Fixtures\*.*">
+    <Content Include="Responses/*.*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>  
+    </Content>
   </ItemGroup>
 
 </Project>

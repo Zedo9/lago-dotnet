@@ -13,21 +13,30 @@ namespace Lago.NET.Client.Clients
     public interface ICustomersClient : IFluentInterface
     {
         async Task<Customer> CreateOrUpdateAsync(
-            CustomerInput customerInput,
+            CreateOrUpdateCustomerInput customerInput,
             CancellationToken cancellationToken = default)
         {
             var result = await CreateOrUpdateAsyncInternal(
-                    new CustomerInputWrapper(customerInput),
+                    new CreateOrUpdateCustomerInputWrapper(customerInput),
                     cancellationToken);
 
             return result?.Customer;
         }
 
         async Task<Customer> FindOneAsync(
-            string code,
+            string customerExternalId,
             CancellationToken cancellationToken = default)
         {
-            var result = await FindOneAsyncInternal(code, cancellationToken);
+            var result = await FindOneAsyncInternal(customerExternalId, cancellationToken);
+
+            return result?.Customer;
+        }
+
+        async Task<Customer> DestroyAsync(
+            string customerExternalId,
+            CancellationToken cancellationToken = default)
+        {
+            var result = await DestroyAsyncInternal(customerExternalId, cancellationToken);
 
             return result?.Customer;
         }
@@ -40,12 +49,17 @@ namespace Lago.NET.Client.Clients
         #region Internal
         [Post("/customers")]
         internal Task<CustomerWrapper> CreateOrUpdateAsyncInternal(
-            [Body] CustomerInputWrapper resource,
+            [Body] CreateOrUpdateCustomerInputWrapper resource,
             CancellationToken cancellationToken);
 
-        [Get("/customers/{code}")]
+        [Get("/customers/{customerExternalId}")]
         internal Task<CustomerWrapper> FindOneAsyncInternal(
-            string code,
+            string customerExternalId,
+            CancellationToken cancellationToken);
+
+        [Delete("/customers/{customerExternalId}")]
+        internal Task<CustomerWrapper> DestroyAsyncInternal(
+            string customerExternalId,
             CancellationToken cancellationToken);
         #endregion
     }

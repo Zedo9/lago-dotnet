@@ -4,6 +4,7 @@ public class BillableMetricsClientTests
 {
     private readonly MockHttpMessageHandler _mockHandler;
     private readonly ILagoClient _sut;
+    private readonly string _resourceName = "billable_metric";
 
     public BillableMetricsClientTests()
     {
@@ -18,7 +19,7 @@ public class BillableMetricsClientTests
            .When(HttpMethod.Get, "https://api.getlago.com/api/v1/billable_metrics")
            .WithHeaders("Authorization", "Bearer apiKey")
            .WithHeaders("Accept", "application/json")
-           .Respond("application/json", JsonFixtures.BillableMetricsJSON);
+           .Respond("application/json", Responses.GetIndexJson(_resourceName));
 
         var result = await _sut.BillableMetrics.FindAllAsync();
 
@@ -33,7 +34,7 @@ public class BillableMetricsClientTests
            .When(HttpMethod.Get, "https://api.getlago.com/api/v1/billable_metrics?per_page=2&page=1")
            .WithHeaders("Authorization", "Bearer apiKey")
            .WithHeaders("Accept", "application/json")
-           .Respond("application/json", JsonFixtures.BillableMetricsJSON);
+           .Respond("application/json", Responses.GetIndexJson(_resourceName));
 
         var result = await _sut.BillableMetrics.FindAllAsync(new PageFilter(2, 1));
 
@@ -48,9 +49,9 @@ public class BillableMetricsClientTests
            .When(HttpMethod.Post, "https://api.getlago.com/api/v1/billable_metrics")
            .WithHeaders("Authorization", "Bearer apiKey")
            .WithHeaders("Accept", "application/json")
-           .Respond("application/json", JsonFixtures.BillableMetricJSON);
+           .Respond("application/json", Responses.GetJson(_resourceName));
 
-        var createBillableMetricInput = new BillableMetricInput()
+        var createBillableMetricInput = new CreateOrUpdateBillableMetricInput()
         {
             Name = "bm_name",
             Code = "bm_code",
@@ -73,9 +74,9 @@ public class BillableMetricsClientTests
            .When(HttpMethod.Put, "https://api.getlago.com/api/v1/billable_metrics/bm_code")
            .WithHeaders("Authorization", "Bearer apiKey")
            .WithHeaders("Accept", "application/json")
-           .Respond("application/json", JsonFixtures.BillableMetricJSON);
+           .Respond("application/json", Responses.GetJson(_resourceName));
 
-        var updateBillableMetricInput = new BillableMetricInput()
+        var updateBillableMetricInput = new CreateOrUpdateBillableMetricInput()
         {
             Name = "new_name",
         };
@@ -93,7 +94,7 @@ public class BillableMetricsClientTests
            .When(HttpMethod.Delete, "https://api.getlago.com/api/v1/billable_metrics/bm_code")
            .WithHeaders("Authorization", "Bearer apiKey")
            .WithHeaders("Accept", "application/json")
-           .Respond("application/json", JsonFixtures.BillableMetricJSON);
+           .Respond("application/json", Responses.GetJson(_resourceName));
 
         var result = await _sut.BillableMetrics.DestroyAsync("bm_code");
 
