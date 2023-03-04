@@ -54,6 +54,17 @@ namespace Lago.NET.Client.Clients
             return result?.AddOn;
         }
 
+        async Task<AppliedAddOn> ApplyToCustomerAsync(
+            ApplyAddOnInput createAppliedAddOnInput,
+            CancellationToken cancellationToken = default)
+        {
+            var result = await ApplyToCustomerAsyncInternal(
+                new CreateAppliedAddOnInputWrapper(createAppliedAddOnInput),
+                cancellationToken);
+
+            return result?.AppliedAddOn;
+        }
+
         [Get("/add_ons")]
         Task<AddOnsResult> FindAllAsync(
              [Query] PageFilter pageFilter = null,
@@ -63,6 +74,11 @@ namespace Lago.NET.Client.Clients
         [Post("/add_ons")]
         internal Task<AddOnWrapper> CreateAsyncInternal(
             [Body] CreateAddOnInputWrapper createAddOnInputWrapper,
+            CancellationToken cancellationToken);
+
+        [Post("/applied_add_ons")]
+        internal Task<AppliedAddOnWrapper> ApplyToCustomerAsyncInternal(
+            [Body] CreateAppliedAddOnInputWrapper createAppliedAddOnInputWrapper,
             CancellationToken cancellationToken);
 
         [Put("/add_ons/{code}")]

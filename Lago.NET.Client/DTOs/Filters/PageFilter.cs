@@ -5,6 +5,7 @@ namespace Lago.NET.Client.DTOs.Filters
     public class PageFilter
     {
         protected PageFilter() { }
+
         public PageFilter(int perPage, int page)
         {
             PerPage = perPage;

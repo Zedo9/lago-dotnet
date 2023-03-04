@@ -10,6 +10,7 @@ namespace Lago.NET.Client.Serialization
         internal static readonly IHttpContentSerializer DefaultSerializerSettings =
             new SystemTextJsonContentSerializer(new JsonSerializerOptions()
             {
+                PropertyNamingPolicy = new JsonSnakeCaseNamingPolicy(),
                 PropertyNameCaseInsensitive = false,
                 WriteIndented = false,
                 Converters = { new JsonStringEnumConverter(new JsonSnakeCaseNamingPolicy()) }

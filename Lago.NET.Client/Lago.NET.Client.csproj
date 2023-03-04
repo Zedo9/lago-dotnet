@@ -1,18 +1,31 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-      <TargetFramework>netstandard2.1</TargetFramework>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
 
-  <ItemGroup>
-    <PackageReference Include="IFluentInterface" Version="2.1.0">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
-    <PackageReference Include="Refit" Version="6.3.2" />
-    <PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
-    <PackageReference Include="System.Text.Json" Version="7.0.1" />
-  </ItemGroup>
+        <!-- Nuget Publishing -->
+        <PackageId>Lago.NET.Client</PackageId>
+        <Title>Lago .NET Client</Title>
+        <Description>Lago API .NET Standard 2.1 fluent wrapper built with Refit and System.Text.Json</Description>
+        <Authors>Chedly Zouche</Authors>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/zedo9/lago-dotnet</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/zedo9/lago-dotnet</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageTags>lago;dotnet;billing;api;opensource</PackageTags>
+        <!-- <PackageIconUrl>https://doc.getlago.com/img/logo.svg</PackageIconUrl> -->
+        <PackageReleaseNotes>See https://github.com/zedo9/lago-dotnet/releases</PackageReleaseNotes>
+    </PropertyGroup>
 
+    <ItemGroup>
+        <PackageReference Include="IFluentInterface" Version="2.1.0">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
+        <PackageReference Include="Refit" Version="6.3.2" />
+        <PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
+        <PackageReference Include="System.Text.Json" Version="7.0.1" />
+    </ItemGroup>
 </Project>

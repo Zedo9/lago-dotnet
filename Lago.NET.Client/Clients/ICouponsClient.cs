@@ -54,15 +54,55 @@ namespace Lago.NET.Client.Clients
             return result?.Coupon;
         }
 
+        async Task<AppliedCoupon> ApplyToCustomerAsync(
+            ApplyCouponInput applyCouponInput,
+            CancellationToken cancellationToken = default)
+        {
+            var result = await ApplyToCustomerAsyncInternal(
+                new ApplyCouponInputWrapper(applyCouponInput),
+                cancellationToken);
+
+            return result?.AppliedCoupon;
+        }
+
+        async Task<AppliedCoupon> DestroyAppliedCouponAsync(
+            string customerExternalId,
+            string couponCode,
+            CancellationToken cancellationToken = default)
+        {
+            var result = await DestroyAppliedCouponAsyncInternal(
+                customerExternalId,
+                couponCode,
+                cancellationToken);
+
+            return result?.AppliedCoupon;
+        }
+
         [Get("/coupons")]
         Task<CouponsResult> FindAllAsync(
-             [Query] PageFilter pageFilter = null,
-             CancellationToken cancellationToken = default);
+            [Query] PageFilter pageFilter = null,
+            CancellationToken cancellationToken = default);
+
+        [Get("/applied_coupons")]
+        Task<CouponsResult> FindAllAppliedAsync(
+            [Query] PageFilter pageFilter = null,
+            CancellationToken cancellationToken = default);
 
         #region Internal
         [Post("/coupons")]
         internal Task<CouponWrapper> CreateAsyncInternal(
             [Body] CreateOrUpdateCouponInputWrapper createOrUpdateCouponInputWrapper,
+            CancellationToken cancellationToken);
+
+        [Post("/applied_coupons")]
+        internal Task<AppliedCouponWrapper> ApplyToCustomerAsyncInternal(
+            [Body] ApplyCouponInputWrapper applyCouponInputWrapper,
+            CancellationToken cancellationToken);
+
+        [Post("/customers/{customerExternalId}/applied_coupons/{couponCode}")]
+        internal Task<AppliedCouponWrapper> DestroyAppliedCouponAsyncInternal(
+            string customerExternalId,
+            string couponCode,
             CancellationToken cancellationToken);
 
         [Put("/coupons/{code}")]

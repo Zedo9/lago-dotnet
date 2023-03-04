@@ -11,6 +11,7 @@ namespace Lago.NET.Client.DTOs.Filters
 
         [AliasAs("transaction_type")]
         public WalletTransactionType? Type { get; set; }
+
         public WalletTransactionsFilter(
             int perPage,
             int page,
