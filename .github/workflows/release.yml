@@ -2,10 +2,10 @@ name: Release
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "Lago.NET.Client/**"
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - "Lago.NET.Client/**"
 
 jobs:
   release:
