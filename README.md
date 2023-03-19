@@ -1,10 +1,10 @@
 # Lago .Net Client
 
-A .NET Standard 2.1 SDK wrapper built with Refit for Lago API.
+A fluent .NET Standard 2.1 SDK wrapper built with Refit for [Lago API](https://www.getlago.com/).
 
 ## Installation
 
-Via Nuget
+Via Nuget:
 
 ```sh
 # Package Manager
@@ -22,16 +22,16 @@ dotnet add package Lago.NET.Client
 using Lago.NET.Client;
 
 ILagoClient lagoClient = LagoClientFactory.Create("apiKey");
-// Or : LagoClientFactory.Create("apiKey", "https://api.getlago.com");
+// Or with a custom host : LagoClientFactory.Create("apiKey", "https://api.getlago.com");
 
-BillableMetricInput billableMetricInput = new();
-BillableMetric result = await lagoClient.BillableMetrics.CreateAsync(billableMetricInput);
+var addOnInput = new CreateAddOnInput("add_on_name", "add_on_code", 5000, "USD", "desc");
+var result = await lagoClient.AddOns.CreateAsync(addOnInput);
 ```
 
 ### Registering ILagoClient in your DI container using the provided extension method
 
 ```csharp
-// startup.cs / program.cs
+// Startup.cs / Program.cs
 using Lago.NET.Client.Extensions.DependencyInjection;
 
 services.AddLagoClient((httpClient) => {

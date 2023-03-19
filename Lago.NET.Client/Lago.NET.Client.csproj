@@ -6,6 +6,7 @@
         <!-- Nuget Publishing -->
         <PackageId>Lago.NET.Client</PackageId>
         <Title>Lago .NET Client</Title>
+        <Version>0.0.1</Version>
         <Description>Lago API .NET Standard 2.1 fluent wrapper built with Refit and System.Text.Json</Description>
         <Authors>Chedly Zouche</Authors>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
